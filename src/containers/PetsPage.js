@@ -12,9 +12,19 @@ class PetsPage extends Component {
     this.props.fetchPets();
   }
 
+
+
   render() {
+    // debugger;
     return (
-      <div>Pets Page</div>
+      <div>
+        <PetsList pets={this.props.pets} />
+        <Route path={`${this.props.match.url}/new`} component={PetsNew} />
+        <Route path={`${this.props.match.url}/:petId`} component={PetsShow}/>
+        <Route exact path={this.props.match.url} render={() => (
+        <h3>Please select a Pet from the list.</h3>
+      )}/>
+      </div>
     )
   }
 };
